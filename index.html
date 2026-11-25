@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Fuad — Computer Shop Owner | Ex-Banker | Biker</title>
+    <style>
+        /* =========================================
+           CHAKRA UI INSPIRED DESIGN SYSTEM
+           ========================================= */
+        :root {
+            --brand-50: #E6FFFA;
+            --brand-100: #B2F5EA;
+            --brand-200: #81E6D9;
+            --brand-400: #38B2AC;
+            --brand-500: #319795;
+            --brand-600: #2C7A7B;
+            --brand-900: #1D4044;
+            
+            --gray-50: #F7FAFC;
+            --gray-100: #EDF2F7;
+            --gray-200: #E2E8F0;
+            --gray-500: #718096;
+            --gray-600: #4A5568;
+            --gray-700: #2D3748;
+            
+            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-family);
+            color: var(--gray-700);
+            background-color: #ffffff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; object-fit: cover; }
+        button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+
+        /* Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .flex { display: flex; }
+        .grid { display: grid; gap: 1.5rem; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-center { justify-content: center; }
+        .text-center { text-align: center; }
+        
+        /* Sections */
+        section { padding: 5rem 0; scroll-margin-top: 70px; }
+        .bg-white { background: #ffffff; }
+        .bg-gray { background: var(--gray-50); }
+        .bg-brand { background: var(--brand-50); }
+
+        /* Typography */
+        h1, h2, h3 { color: var(--gray-700); letter-spacing: -0.025em; line-height: 1.2; }
+        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        h2 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .eyebrow {
+            font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em;
+            color: var(--brand-500); text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .text-muted { color: var(--gray-600); font-size: 1.125rem; }
+        .text-sm { font-size: 0.875rem; }
+        
+        /* Components */
+        .badge {
+            display: inline-block; padding: 0.25rem 0.75rem;
+            font-size: 0.75rem; font-weight: 700; border-radius: 9999px;
+            background: var(--brand-100); color: var(--brand-800);
+        }
+        
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600;
+            font-size: 1rem; transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: var(--brand-500); color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary:hover {
+            background: var(--brand-600); transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .btn-outline {
+            background: transparent; color: var(--brand-500); border: 1px solid var(--brand-500);
+        }
+        .btn-outline:hover { background: var(--brand-50); }
+
+        .card {
+            background: white; border-radius: 1rem; padding: 2rem;
+            border: 1px solid var(--gray-100); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-100);
+        }
+        .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; font-weight: 800; font-size: 1.125rem; }
+        .logo-box {
+            width: 34px; height: 34px; border-radius: 10px;
+            background: linear-gradient(to bottom right, var(--brand-400), var(--brand-600));
+            color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem;
+        }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-size: 0.875rem; font-weight: 600; color: var(--gray-600); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--brand-600); }
+
+        /* Hero */
+        .hero { position: relative; overflow: hidden; padding: 6rem 0; }
+        .hero-blob-1 {
+            position: absolute; top: -140px; right: -90px; width: 400px; height: 400px;
+            background: var(--brand-200); border-radius: 50%; opacity: 0.5; filter: blur(70px); z-index: -1;
+        }
+        .hero-blob-2 {
+            position: absolute; bottom: -160px; left: -110px; width: 360px; height: 360px;
+            background: #E9D8FD; border-radius: 50%; opacity: 0.4; filter: blur(70px); z-index: -1;
+        }
+        .hero-flex { display: flex; gap: 3.5rem; align-items: center; }
+        .avatar {
+            width: 160px; height: 160px; border-radius: 50%; border: 4px solid white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); object-fit: cover;
+        }
+        .hero-content { flex: 1; }
+        .hero-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 4rem; }
+        .stat-box { background: white; border-radius: 1rem; padding: 1.25rem; border: 1px solid var(--gray-100); }
+        .stat-number { font-size: 1.5rem; font-weight: 800; color: var(--brand-600); line-height: 1.1; }
+
+        /* Grid Layouts */
+        .grid-2 { grid-template-columns: 1fr 1fr; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-travel { grid-template-columns: repeat(3, 1fr); }
+
+        /* Gallery */
+        .gallery-img { height: 210px; width: 100%; border-radius: 1rem 1rem 0 0; transition: transform 0.4s ease; }
+        .gallery-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+        .gallery-card:hover .gallery-img { transform: scale(1.05); }
+        .gallery-caption { padding: 1rem; font-size: 0.875rem; color: var(--gray-600); }
+
+        /* Footer */
+        footer { background: var(--brand-900); color: white; padding: 3rem 0; }
+        footer a { color: rgba(255,255,255,0.8); font-size: 0.875rem; transition: color 0.2s; }
+        footer a:hover { color: white; }
+        .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 2rem 0 1rem; }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-flex { flex-direction: column; text-align: center; gap: 2rem; }
+            .hero-buttons { justify-content: center; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .grid-travel { grid-template-columns: 1fr; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">
+                <div class="logo-box">MF</div>
+                Md. Fuad
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#shop">Shop</a>
+                <a href="#banking">Banking</a>
+                <a href="#travel">Travel</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="btn btn-primary text-sm" style="padding: 0.5rem 1rem;">Get in touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero bg-brand">
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="container">
+            <div class="hero-flex">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80" alt="Md. Fuad" class="avatar">
+                <div class="hero-content">
+                    <span class="badge">CUMILLA · BANGLADESH</span>
+                    <h1 style="margin-top: 1rem;">Computer shop owner,<br>ex-banker & biker.</h1>
+                    <p class="text-muted" style="max-width: 600px;">
+                        I run a trusted computer shop in Cumilla after a decade in banking — and when the shutters come down, I ride out to find the next stretch of open road.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#shop" class="btn btn-primary">Visit the shop</a>
+                        <a href="#travel" class="btn btn-outline">See my rides</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">10+</div>
+                    <div class="text-sm text-muted" style="margin-top: 0.25rem;">Years in banking</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">8+</div>
+                    <div class="text-sm text-muted" style="margin-top: 0.25rem;">Years running the shop</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">40k+</div>
+                    <div class="text-sm text-muted" style="margin-top: 0.25rem;">Kilometres on the bike</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="bg-white">
+        <div class="container grid grid-2 items-center">
+            <div>
+                <div class="eyebrow">ABOUT</div>
+                <h2>Three chapters, one journey.</h2>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+                    <p class="text-muted">I spent more than ten years in the banking sector — working with people, numbers and deadlines. It taught me discipline, patience and how to solve problems calmly when everything is on fire.</p>
+                    <p class="text-muted">Today I run a computer shop in Cumilla. I sell, repair and support the machines people depend on every day. It is a different kind of work, but the same principle: be honest, explain clearly, and stand behind what you sell.</p>
+                    <p class="text-muted">And then there is the bike. Long rides across Bangladesh keep me curious and keep everything else in perspective.</p>
+                </div>
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80" alt="Computer Shop" style="border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); height: 400px; width: 100%;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="bg-gray">
+        <div class="container">
+            <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
+                <div class="eyebrow">THE SHOP</div>
+                <h2>Computers, handled with care.</h2>
+                <p class="text-muted" style="margin-top: 0.5rem;">Everything you need for home, study or office — from a single cable to a full workstation setup.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card text-center">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">💻</div>
+                    <h3>Sales</h3>
+                    <p class="text-muted text-sm" style="margin-top: 0.5rem;">Laptops, desktops, monitors and accessories — genuine products with proper warranty.</p>
+                </div>
+                <div class="card text-center">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔧</div>
+                    <h3>Service & repair</h3>
+                    <p class="text-muted text-sm" style="margin-top: 0.5rem;">Diagnostics, part replacement, upgrades, OS installation and data recovery.</p>
+                </div>
+                <div class="card text-center">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
+                    <h3>Advice & support</h3>
+                    <p class="text-muted text-sm" style="margin-top: 0.5rem;">Honest recommendations for home users, students and small offices in Cumilla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banking Section -->
+    <section id="banking" class="bg-white">
+        <div class="container grid grid-2">
+            <div>
+                <div class="eyebrow">BANKING</div>
+                <h2>A decade behind the counter.</h2>
+                <p class="text-muted" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+                    Banking gave me the foundation for everything I do now — how to read a balance sheet, how to explain a complicated product in plain language, and how to keep a promise. Those habits came with me when I opened the shop.
+                </p>
+                <div style="display: flex; gap: 2rem; border-top: 1px solid var(--gray-200); padding-top: 2rem;">
+                    <div>
+                        <div class="stat-number">10+</div>
+                        <div class="text-sm text-muted">Years of service</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">1000s</div>
+                        <div class="text-sm text-muted">Customer relationships</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
+                    <strong style="display: block; margin-bottom: 0.25rem;">Branch Operations</strong>
+                    <span class="text-sm text-muted">Daily banking, cash management and compliance.</span>
+                </div>
+                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
+                    <strong style="display: block; margin-bottom: 0.25rem;">Credit Analysis</strong>
+                    <span class="text-sm text-muted">Assessing SME and retail loan proposals.</span>
+                </div>
+                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
+                    <strong style="display: block; margin-bottom: 0.25rem;">Customer Relations</strong>
+                    <span class="text-sm text-muted">Building long-term trust with clients.</span>
+                </div>
+                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
+                    <strong style="display: block; margin-bottom: 0.25rem;">Team Leadership</strong>
+                    <span class="text-sm text-muted">Guiding and training branch staff.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Section -->
+    <section id="travel" class="bg-gray">
+        <div class="container">
+            <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
+                <div class="eyebrow">ON THE ROAD</div>
+                <h2>Biking & travel.</h2>
+                <p class="text-muted" style="margin-top: 0.5rem;">Snapshots from weekend rides and longer trips — from Cumilla's historic sites to the winding hill roads of Bangladesh.</p>
+            </div>
+
+            <div class="grid grid-travel">
+                <div class="card gallery-card">
+                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80" class="gallery-img">
+                    <div class="gallery-caption">Highway mornings — Dhaka–Chattogram road</div>
+                </div>
+                <div class="card gallery-card">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" class="gallery-img">
+                    <div class="gallery-caption">Hill roads in the southeast</div>
+                </div>
+                <div class="card gallery-card">
+                    <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=900&q=80" class="gallery-img">
+                    <div class="gallery-caption">Shalban Vihar, Cumilla</div>
+                </div>
+                <div class="card gallery-card">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" class="gallery-img">
+                    <div class="gallery-caption">Cold mornings, clear skies</div>
+                </div>
+                <div class="card gallery-card">
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80" class="gallery-img">
+                    <div class="gallery-caption">Parked at a roadside tea stall</div>
+                </div>
+                <div class="card gallery-card">
+                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=80" class="gallery-img">
+                    <div class="gallery-caption">Back at the shop</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-white">
+        <div class="container text-center" style="max-width: 600px;">
+            <div class="eyebrow">CONTACT</div>
+            <h2>Let's connect.</h2>
+            <p class="text-muted" style="margin-top: 1rem; margin-bottom: 2rem;">
+                Need advice on a laptop, a repair, or a riding route? My door in Cumilla is always open — reach out any time.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="mailto:fuad@example.com" class="btn btn-primary" style="border-radius: 0.75rem;">📧 fuad@example.com</a>
+                <a href="tel:+8801700000000" class="btn btn-outline" style="border-radius: 0.75rem;">📞 +880 1700-000000</a>
+                <a href="https://facebook.com" target="_blank" class="btn btn-outline" style="border-radius: 0.75rem; border-color: var(--gray-200); color: var(--gray-700);">🌐 Facebook</a>
+            </div>
+            <p class="text-sm text-muted" style="margin-top: 2rem;">
+                Kandirpar, Cumilla 3500 · Open Saturday–Thursday, 10:00–20:00
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="flex justify-between items-center" style="flex-wrap: wrap; gap: 1.5rem;">
+                <div>
+                    <div style="font-weight: 800; font-size: 1.125rem;">Md. Fuad</div>
+                    <div style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem;">Computer shop owner · Ex-banker · Biker</div>
+                </div>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#about">About</a>
+                    <a href="#shop">Shop</a>
+                    <a href="#banking">Banking</a>
+                    <a href="#travel">Travel</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">
+                © <span id="year"></span> Md. Fuad · Cumilla, Bangladesh
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inline JavaScript for dynamic year -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
