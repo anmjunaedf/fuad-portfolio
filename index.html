@@ -1,410 +1,975 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Fuad — Computer Shop Owner | Ex-Banker | Biker</title>
-    <style>
-        /* =========================================
-           CHAKRA UI INSPIRED DESIGN SYSTEM
-           ========================================= */
-        :root {
-            --brand-50: #E6FFFA;
-            --brand-100: #B2F5EA;
-            --brand-200: #81E6D9;
-            --brand-400: #38B2AC;
-            --brand-500: #319795;
-            --brand-600: #2C7A7B;
-            --brand-900: #1D4044;
-            
-            --gray-50: #F7FAFC;
-            --gray-100: #EDF2F7;
-            --gray-200: #E2E8F0;
-            --gray-500: #718096;
-            --gray-600: #4A5568;
-            --gray-700: #2D3748;
-            
-            --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Md. Fuad — FBF Tech | Computer Shop, Cumilla</title>
+<meta name="description" content="Md. Fuad — Owner of FBF Tech, Cumilla. Computer, Hardware, Software, Networking & CCTV Solutions. Ex-Banker. Biker & Traveler." />
 
-        /* Reset & Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font-family);
-            color: var(--gray-700);
-            background-color: #ffffff;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; object-fit: cover; }
-        button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+<style>
+/* ============================================================
+   DESIGN TOKENS  (mirrors Chakra UI defaults used before)
+   ============================================================ */
+:root{
+  /* brand */
+  --brand-50:#ecfeff; --brand-100:#cffafe; --brand-200:#a5f3fc;
+  --brand-300:#67e8f9; --brand-400:#22d3ee; --brand-500:#06b6d4;
+  --brand-600:#0891b2; --brand-700:#0e7490; --brand-800:#155e75;
+  --brand-900:#164e63;
+  /* purple */
+  --purple-300:#c4b5fd; --purple-500:#8b5cf6; --purple-600:#7c3aed;
+  /* neutrals */
+  --bg:#070b14;
+  --fg:#e6edf7;
+  --whiteA-50:rgba(255,255,255,.04);
+  --whiteA-100:rgba(255,255,255,.06);
+  --whiteA-200:rgba(255,255,255,.08);
+  --whiteA-300:rgba(255,255,255,.16);
+  --whiteA-400:rgba(255,255,255,.24);
+  --whiteA-500:rgba(255,255,255,.36);
+  --whiteA-600:rgba(255,255,255,.48);
+  --whiteA-700:rgba(255,255,255,.64);
+  --whiteA-800:rgba(255,255,255,.80);
+  /* radii */
+  --r-md:6px; --r-lg:8px; --r-xl:12px; --r-2xl:16px; --r-3xl:24px; --r-full:9999px;
+  /* spacing */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px;
+  --s-8:32px; --s-10:40px; --s-12:48px; --s-14:56px; --s-16:64px; --s-20:80px; --s-24:96px;
+}
 
-        /* Layout Utilities */
-        .container {
-            width: 100%;
-            max-width: 1150px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        .flex { display: flex; }
-        .grid { display: grid; gap: 1.5rem; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .justify-center { justify-content: center; }
-        .text-center { text-align: center; }
-        
-        /* Sections */
-        section { padding: 5rem 0; scroll-margin-top: 70px; }
-        .bg-white { background: #ffffff; }
-        .bg-gray { background: var(--gray-50); }
-        .bg-brand { background: var(--brand-50); }
+/* ============================================================
+   RESET
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:'Hind Siliguri','Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--bg); color:var(--fg);
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background:var(--bg); }
+::-webkit-scrollbar-thumb{ background:#1e293b; border-radius:8px; }
 
-        /* Typography */
-        h1, h2, h3 { color: var(--gray-700); letter-spacing: -0.025em; line-height: 1.2; }
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
-        h2 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1rem; }
-        h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .eyebrow {
-            font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em;
-            color: var(--brand-500); text-transform: uppercase; margin-bottom: 0.5rem;
-        }
-        .text-muted { color: var(--gray-600); font-size: 1.125rem; }
-        .text-sm { font-size: 0.875rem; }
-        
-        /* Components */
-        .badge {
-            display: inline-block; padding: 0.25rem 0.75rem;
-            font-size: 0.75rem; font-weight: 700; border-radius: 9999px;
-            background: var(--brand-100); color: var(--brand-800);
-        }
-        
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600;
-            font-size: 1rem; transition: all 0.2s ease;
-        }
-        .btn-primary {
-            background: var(--brand-500); color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .btn-primary:hover {
-            background: var(--brand-600); transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .btn-outline {
-            background: transparent; color: var(--brand-500); border: 1px solid var(--brand-500);
-        }
-        .btn-outline:hover { background: var(--brand-50); }
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.container{ width:100%; max-width:1152px; margin:0 auto; padding:0 var(--s-4); }
+@media(min-width:640px){ .container{ padding:0 var(--s-6); } }
 
-        .card {
-            background: white; border-radius: 1rem; padding: 2rem;
-            border: 1px solid var(--gray-100); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
-        }
-        .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-            transform: translateY(-3px);
-        }
+.section{ padding:var(--s-14) 0; scroll-margin-top:80px; }
+@media(min-width:768px){ .section{ padding:var(--s-20) 0; } }
 
-        /* Navbar */
-        nav {
-            position: sticky; top: 0; z-index: 50;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-100);
-        }
-        .nav-inner { height: 64px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; font-weight: 800; font-size: 1.125rem; }
-        .logo-box {
-            width: 34px; height: 34px; border-radius: 10px;
-            background: linear-gradient(to bottom right, var(--brand-400), var(--brand-600));
-            color: white; display: flex; align-items: center; justify-content: center; font-size: 0.875rem;
-        }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-size: 0.875rem; font-weight: 600; color: var(--gray-600); transition: color 0.2s; }
-        .nav-links a:hover { color: var(--brand-600); }
+.section--alt{ background:var(--whiteA-50); border-top:1px solid var(--whiteA-100); border-bottom:1px solid var(--whiteA-100); }
 
-        /* Hero */
-        .hero { position: relative; overflow: hidden; padding: 6rem 0; }
-        .hero-blob-1 {
-            position: absolute; top: -140px; right: -90px; width: 400px; height: 400px;
-            background: var(--brand-200); border-radius: 50%; opacity: 0.5; filter: blur(70px); z-index: -1;
-        }
-        .hero-blob-2 {
-            position: absolute; bottom: -160px; left: -110px; width: 360px; height: 360px;
-            background: #E9D8FD; border-radius: 50%; opacity: 0.4; filter: blur(70px); z-index: -1;
-        }
-        .hero-flex { display: flex; gap: 3.5rem; align-items: center; }
-        .avatar {
-            width: 160px; height: 160px; border-radius: 50%; border: 4px solid white;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); object-fit: cover;
-        }
-        .hero-content { flex: 1; }
-        .hero-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
-        
-        /* Stats Grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 4rem; }
-        .stat-box { background: white; border-radius: 1rem; padding: 1.25rem; border: 1px solid var(--gray-100); }
-        .stat-number { font-size: 1.5rem; font-weight: 800; color: var(--brand-600); line-height: 1.1; }
+.grid{ display:grid; gap:var(--s-5); }
+.grid--2{ grid-template-columns:1fr; }
+.grid--3{ grid-template-columns:1fr; }
+.grid--4{ grid-template-columns:1fr; }
+@media(min-width:640px){
+  .grid--2{ grid-template-columns:1fr 1fr; }
+  .grid--3{ grid-template-columns:1fr 1fr; }
+  .grid--4{ grid-template-columns:1fr 1fr; }
+}
+@media(min-width:1024px){
+  .grid--3{ grid-template-columns:1fr 1fr 1fr; }
+  .grid--4{ grid-template-columns:1fr 1fr 1fr 1fr; }
+}
 
-        /* Grid Layouts */
-        .grid-2 { grid-template-columns: 1fr 1fr; }
-        .grid-3 { grid-template-columns: repeat(3, 1fr); }
-        .grid-travel { grid-template-columns: repeat(3, 1fr); }
+.stack{ display:flex; flex-direction:column; gap:var(--s-4); }
+.stack--tight{ gap:var(--s-3); }
+.row{ display:flex; align-items:center; gap:var(--s-3); flex-wrap:wrap; }
+.row--start{ align-items:flex-start; }
+.row--between{ justify-content:space-between; }
 
-        /* Gallery */
-        .gallery-img { height: 210px; width: 100%; border-radius: 1rem 1rem 0 0; transition: transform 0.4s ease; }
-        .gallery-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
-        .gallery-card:hover .gallery-img { transform: scale(1.05); }
-        .gallery-caption { padding: 1rem; font-size: 0.875rem; color: var(--gray-600); }
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.h1{ font-size:1.875rem; line-height:1.18; font-weight:800; letter-spacing:-0.02em; }
+@media(min-width:768px){ .h1{ font-size:3rem; } }
 
-        /* Footer */
-        footer { background: var(--brand-900); color: white; padding: 3rem 0; }
-        footer a { color: rgba(255,255,255,0.8); font-size: 0.875rem; transition: color 0.2s; }
-        footer a:hover { color: white; }
-        .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 2rem 0 1rem; }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-flex { flex-direction: column; text-align: center; gap: 2rem; }
-            .hero-buttons { justify-content: center; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .grid-2, .grid-3, .grid-travel { grid-template-columns: 1fr; }
-            h1 { font-size: 2rem; }
-        }
-    </style>
+.h2{ font-size:1.5rem; font-weight:800; line-height:1.25; letter-spacing:-0.015em; }
+@media(min-width:768px){ .h2{ font-size:2.25rem; } }
+
+.h3{ font-size:1.125rem; font-weight:700; }
+@media(min-width:768px){ .h3{ font-size:1.375rem; } }
+
+.h4{ font-size:1.0625rem; font-weight:700; }
+
+.lead{ font-size:.9375rem; color:var(--whiteA-700); }
+@media(min-width:768px){ .lead{ font-size:1rem; } }
+
+.muted{ color:var(--whiteA-600); }
+.small{ font-size:.8125rem; }
+.xs{ font-size:.75rem; }
+.xxs{ font-size:.6875rem; }
+
+.gradient-text{
+  background:linear-gradient(90deg,var(--brand-300),var(--purple-300));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+.eyebrow{
+  display:inline-block;
+  padding:4px 12px; border-radius:var(--r-full);
+  background:var(--brand-900); color:var(--brand-200);
+  font-size:.6875rem; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.eyebrow--light{
+  background:var(--whiteA-200); color:#fff;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card{
+  background:var(--whiteA-50);
+  border:1px solid var(--whiteA-200);
+  border-radius:var(--r-2xl);
+  padding:var(--s-5);
+  transition:transform .25s ease, border-color .25s ease, background .25s ease;
+}
+.card--hover:hover{
+  border-color:var(--brand-400);
+  background:var(--whiteA-100);
+  transform:translateY(-4px);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  padding:10px 18px; border-radius:var(--r-xl);
+  font-size:.875rem; font-weight:600;
+  border:1px solid transparent;
+  transition:background .2s ease, border-color .2s ease, transform .15s ease;
+  white-space:nowrap;
+}
+.btn:active{ transform:translateY(1px); }
+
+.btn--sm{ padding:6px 14px; font-size:.8125rem; }
+.btn--lg{ padding:12px 22px; font-size:.9375rem; }
+
+.btn--primary{ background:var(--brand-500); color:#0b1220; }
+.btn--primary:hover{ background:var(--brand-400); }
+
+.btn--outline{
+  background:transparent; color:var(--fg);
+  border-color:var(--whiteA-300);
+}
+.btn--outline:hover{ background:var(--whiteA-100); }
+
+.btn--ghost{
+  background:transparent; color:var(--brand-300);
+}
+.btn--ghost:hover{ background:var(--whiteA-100); }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.nav{
+  position:sticky; top:0; z-index:1000;
+  background:rgba(7,11,20,.85);
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--whiteA-100);
+}
+.nav__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:var(--s-3) 0;
+}
+.nav__brand{ display:flex; align-items:center; gap:var(--s-3); }
+.nav__logo{
+  width:40px; height:40px; border-radius:var(--r-xl);
+  background:linear-gradient(135deg,var(--brand-400),var(--purple-500));
+  color:#0b1220; font-weight:800; font-size:1.125rem;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.nav__brand-text{ display:flex; flex-direction:column; line-height:1.1; }
+.nav__brand-text strong{ font-size:.9375rem; }
+.nav__brand-text span{
+  font-size:.6875rem; color:var(--whiteA-600);
+  text-transform:uppercase; letter-spacing:.08em; font-weight:600;
+}
+
+.nav__links{ display:none; }
+@media(min-width:1024px){
+  .nav__links{ display:flex; align-items:center; gap:4px; }
+  .nav__links a{
+    padding:8px 12px; border-radius:var(--r-md);
+    font-size:.875rem; font-weight:600; color:var(--whiteA-700);
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav__links a:hover{ color:#fff; background:var(--whiteA-100); }
+}
+
+.nav__actions{ display:flex; align-items:center; gap:var(--s-2); }
+.nav__toggle{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:var(--r-lg);
+  border:1px solid var(--whiteA-300);
+  font-size:1.125rem;
+}
+@media(min-width:1024px){ .nav__toggle{ display:none; } }
+@media(max-width:639px){ .nav__call{ display:none; } }
+
+.nav__mobile{
+  display:none; flex-direction:column;
+  padding:var(--s-3) 0 var(--s-4);
+  border-top:1px solid var(--whiteA-100);
+}
+.nav__mobile.is-open{ display:flex; }
+@media(min-width:1024px){ .nav__mobile{ display:none !important; } }
+.nav__mobile a{
+  padding:10px 12px; border-radius:var(--r-md);
+  font-size:.875rem; font-weight:600;
+}
+.nav__mobile a:hover{ background:var(--whiteA-100); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{ position:relative; overflow:hidden; padding:var(--s-14) 0 var(--s-16); }
+@media(min-width:768px){ .hero{ padding:var(--s-20) 0 var(--s-24); } }
+
+.hero__glow{
+  position:absolute; width:380px; height:380px; border-radius:50%;
+  filter:blur(120px); pointer-events:none; opacity:.20;
+}
+.hero__glow--a{ top:-140px; left:-100px; background:var(--brand-500); }
+.hero__glow--b{ bottom:-160px; right:-80px; background:var(--purple-600); }
+
+.hero__inner{
+  position:relative;
+  display:grid; gap:var(--s-10);
+  grid-template-columns:1fr;
+  align-items:center;
+}
+@media(min-width:1024px){
+  .hero__inner{ grid-template-columns:1fr 1fr; gap:var(--s-16); }
+}
+
+.hero__content{ display:flex; flex-direction:column; gap:var(--s-5); text-align:center; align-items:center; }
+@media(min-width:1024px){
+  .hero__content{ text-align:left; align-items:flex-start; }
+}
+
+.hero__title-sub{ font-size:.9375rem; font-weight:700; color:var(--brand-200); }
+@media(min-width:768px){ .hero__title-sub{ font-size:1rem; } }
+
+.hero__copy{ color:var(--whiteA-700); font-size:.9375rem; max-width:34rem; }
+@media(min-width:768px){ .hero__copy{ font-size:1rem; } }
+
+.stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-3); width:100%; max-width:28rem; }
+.stat{
+  background:var(--whiteA-50); border:1px solid var(--whiteA-200);
+  border-radius:var(--r-xl); padding:var(--s-3) var(--s-4);
+}
+.stat__value{ font-size:1rem; font-weight:800; }
+@media(min-width:768px){ .stat__value{ font-size:1.25rem; } }
+.stat__label{ font-size:.6875rem; color:var(--whiteA-600); text-transform:uppercase; letter-spacing:.08em; }
+
+/* profile card */
+.profile{
+  padding:var(--s-6); border-radius:var(--r-3xl);
+  background:var(--whiteA-50);
+  border:1px solid var(--whiteA-200);
+  box-shadow:0 24px 70px rgba(0,0,0,.5);
+  display:flex; flex-direction:column; gap:var(--s-5);
+}
+@media(min-width:768px){ .profile{ padding:var(--s-8); } }
+
+.profile__head{ display:flex; align-items:center; gap:var(--s-4); }
+.profile__avatar{
+  width:72px; height:72px; border-radius:var(--r-2xl);
+  background:linear-gradient(135deg,var(--brand-400),var(--purple-500));
+  color:#0b1220; font-size:1.375rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.profile__name{ font-size:1.25rem; font-weight:800; line-height:1.2; }
+.profile__role{ font-size:.875rem; color:var(--whiteA-700); }
+.profile__tagline{ font-size:.75rem; color:var(--brand-300); font-weight:600; }
+
+.divider{ height:1px; background:var(--whiteA-200); }
+
+.contact-line{ display:flex; align-items:flex-start; gap:var(--s-3); }
+.contact-line span:first-child{ font-size:.875rem; line-height:1.4; }
+.contact-line span:last-child{
+  font-size:.875rem; color:var(--whiteA-800); word-break:break-word;
+}
+
+.tag{
+  display:inline-block; padding:4px 12px; border-radius:var(--r-full);
+  background:var(--whiteA-100); color:var(--brand-200);
+  font-size:.6875rem; font-weight:600;
+}
+
+/* ============================================================
+   SECTION HEAD
+   ============================================================ */
+.section-head{ display:flex; flex-direction:column; align-items:center; gap:var(--s-3); text-align:center; margin-bottom:var(--s-8); }
+@media(min-width:768px){ .section-head{ margin-bottom:var(--s-12); } }
+.section-head .lead{ max-width:36rem; }
+
+/* ============================================================
+   ICON BOXES
+   ============================================================ */
+.icon-box{
+  width:52px; height:52px; border-radius:var(--r-xl);
+  background:linear-gradient(135deg,var(--brand-500),var(--purple-600));
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.375rem; flex-shrink:0; margin-bottom:var(--s-4);
+}
+.icon-box--sm{ width:42px; height:42px; font-size:1.0625rem; margin:0; background:var(--whiteA-100); border-radius:var(--r-lg); }
+.icon-box--flat{ background:var(--whiteA-100); }
+
+.num-badge{
+  width:26px; height:26px; border-radius:var(--r-full);
+  background:linear-gradient(135deg,var(--brand-400),var(--purple-500));
+  color:#0b1220; font-size:.75rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.num-badge--solid{ background:var(--brand-500); }
+
+/* ============================================================
+   MISC
+   ============================================================ */
+.journey-item{ display:flex; align-items:flex-start; gap:var(--s-4); }
+.journey-item__icon{
+  width:46px; height:46px; border-radius:var(--r-xl);
+  background:var(--whiteA-100);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.25rem; flex-shrink:0;
+}
+.journey-item__year{
+  font-size:.6875rem; font-weight:800; color:var(--brand-300);
+  text-transform:uppercase; letter-spacing:.08em;
+}
+
+.numbered{ display:flex; align-items:flex-start; gap:var(--s-3); }
+.numbered__body{ flex:1; }
+
+.bg-number{
+  position:absolute; top:8px; right:16px;
+  font-size:2.25rem; font-weight:800; color:var(--whiteA-100);
+  line-height:1;
+}
+
+.review-mark{
+  font-family:Georgia,serif; font-size:2rem; line-height:1;
+  color:var(--brand-500); opacity:.45;
+}
+
+.contact-tile{
+  display:flex; align-items:center; gap:var(--s-4);
+  background:var(--whiteA-50); border:1px solid var(--whiteA-200);
+  border-radius:var(--r-xl); padding:var(--s-4);
+  transition:transform .2s ease, background .2s ease, border-color .2s ease;
+}
+.contact-tile:hover{
+  border-color:var(--brand-400); background:var(--whiteA-100);
+  transform:translateX(4px);
+}
+
+.cta-card{
+  padding:var(--s-6); border-radius:var(--r-3xl);
+  border:1px solid var(--whiteA-200);
+  background:linear-gradient(135deg,rgba(34,211,238,.14),rgba(139,92,246,.14));
+}
+@media(min-width:768px){ .cta-card{ padding:var(--s-8); } }
+
+.addr-box{
+  width:100%; padding:var(--s-4); border-radius:var(--r-xl);
+  background:rgba(0,0,0,.25); border:1px solid var(--whiteA-100);
+}
+
+/* ============================================================
+   FOOTER + FAB
+   ============================================================ */
+.footer{
+  border-top:1px solid var(--whiteA-100);
+  padding:var(--s-8) 0;
+  background:rgba(0,0,0,.35);
+}
+.footer__inner{
+  display:flex; flex-direction:column; align-items:center; gap:var(--s-4);
+  text-align:center;
+}
+@media(min-width:768px){
+  .footer__inner{ flex-direction:row; justify-content:space-between; text-align:left; }
+}
+.footer__brand{ display:flex; align-items:center; gap:var(--s-3); }
+.footer__logo{
+  width:34px; height:34px; border-radius:var(--r-lg);
+  background:linear-gradient(135deg,var(--brand-400),var(--purple-500));
+  color:#0b1220; font-weight:800; font-size:.8125rem;
+  display:flex; align-items:center; justify-content:center;
+}
+.footer__links{ display:flex; gap:var(--s-4); flex-wrap:wrap; justify-content:center; }
+.footer__links a{ font-size:.75rem; color:var(--whiteA-600); }
+.footer__links a:hover{ color:var(--brand-300); }
+
+.fab{
+  position:fixed; bottom:20px; right:20px; z-index:1500;
+  width:56px; height:56px; border-radius:50%;
+  background:#25D366; color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 30px rgba(37,211,102,.45);
+  transition:transform .2s ease;
+}
+.fab:hover{ transform:scale(1.08); }
+
+/* utility spacing on section blocks */
+.mt-4{ margin-top:var(--s-4); }
+.mt-8{ margin-top:var(--s-8); }
+.mt-12{ margin-top:var(--s-12); }
+.mt-16{ margin-top:var(--s-16); }
+</style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-inner">
-            <div class="logo">
-                <div class="logo-box">MF</div>
-                Md. Fuad
-            </div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#shop">Shop</a>
-                <a href="#banking">Banking</a>
-                <a href="#travel">Travel</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <a href="#contact" class="btn btn-primary text-sm" style="padding: 0.5rem 1rem;">Get in touch</a>
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="nav" aria-label="Primary">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="#home" class="nav__brand">
+        <div class="nav__logo">F</div>
+        <div class="nav__brand-text">
+          <strong>FBF Tech</strong>
+          <span>Md. Fuad</span>
         </div>
-    </nav>
+      </a>
 
-    <!-- Hero Section -->
-    <header class="hero bg-brand">
-        <div class="hero-blob-1"></div>
-        <div class="hero-blob-2"></div>
-        <div class="container">
-            <div class="hero-flex">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80" alt="Md. Fuad" class="avatar">
-                <div class="hero-content">
-                    <span class="badge">CUMILLA · BANGLADESH</span>
-                    <h1 style="margin-top: 1rem;">Computer shop owner,<br>ex-banker & biker.</h1>
-                    <p class="text-muted" style="max-width: 600px;">
-                        I run a trusted computer shop in Cumilla after a decade in banking — and when the shutters come down, I ride out to find the next stretch of open road.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#shop" class="btn btn-primary">Visit the shop</a>
-                        <a href="#travel" class="btn btn-outline">See my rides</a>
-                    </div>
-                </div>
-            </div>
+      <div class="nav__links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#business">Business</a>
+        <a href="#why">Why Us</a>
+        <a href="#offers">Offers</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-number">10+</div>
-                    <div class="text-sm text-muted" style="margin-top: 0.25rem;">Years in banking</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">8+</div>
-                    <div class="text-sm text-muted" style="margin-top: 0.25rem;">Years running the shop</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">40k+</div>
-                    <div class="text-sm text-muted" style="margin-top: 0.25rem;">Kilometres on the bike</div>
-                </div>
-            </div>
+      <div class="nav__actions">
+        <a href="tel:+8801818712949" class="btn btn--primary btn--sm nav__call">Call Now</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <div class="nav__mobile" id="navMobile">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#business">Business</a>
+      <a href="#why">Why Us</a>
+      <a href="#offers">Offers</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" id="home">
+  <div class="hero__glow hero__glow--a"></div>
+  <div class="hero__glow hero__glow--b"></div>
+
+  <div class="container">
+    <div class="hero__inner">
+
+      <!-- LEFT -->
+      <div class="hero__content">
+        <span class="eyebrow">FBF Tech • Cumilla, Bangladesh</span>
+
+        <h1 class="h1">
+          Md. Fuad — <span class="gradient-text">Computer Shop Owner</span>
+        </h1>
+
+        <p class="hero__title-sub">Ex-Banker • Entrepreneur • Biker &amp; Traveler</p>
+
+        <p class="hero__copy">
+          ৮ বছরের বেশি ব্যাংকিং অভিজ্ঞতা, ২ বছরের বেশি ব্যবসায়িক অভিজ্ঞতা এবং এক দশকের বেশি
+          রাইডিং অভিজ্ঞতা — সব মিলিয়ে আমি বিশ্বাস করি সঠিক পরামর্শ, সৎ সেবা আর দীর্ঘমেয়াদি
+          সম্পর্কই আসল ব্যবসা। কুমিল্লার নিউ মার্কেটে <strong>FBF Tech</strong> থেকে
+          Computer, Hardware, Software, Networking ও CCTV — সব সমাধান এক জায়গায়।
+        </p>
+
+        <div class="row">
+          <a href="tel:+8801818712949" class="btn btn--primary btn--lg">📞 Call Now</a>
+          <a href="https://wa.me/8801818712949" target="_blank" rel="noopener" class="btn btn--outline btn--lg">💬 WhatsApp</a>
+          <a href="#business" class="btn btn--ghost btn--lg">Explore Business →</a>
         </div>
-    </header>
 
-    <!-- About Section -->
-    <section id="about" class="bg-white">
-        <div class="container grid grid-2 items-center">
+        <div class="stats">
+          <div class="stat">
+            <div class="stat__value gradient-text">8+ yrs</div>
+            <div class="stat__label">Banking</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value gradient-text">2+ yrs</div>
+            <div class="stat__label">Business</div>
+          </div>
+          <div class="stat">
+            <div class="stat__value gradient-text">10+ yrs</div>
+            <div class="stat__label">Riding</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — PROFILE CARD -->
+      <aside class="profile">
+        <div class="profile__head">
+          <div class="profile__avatar">MF</div>
+          <div>
+            <div class="profile__name">Md. Fuad</div>
+            <div class="profile__role">Owner, FBF Tech</div>
+            <div class="profile__tagline">Ex-Banker • Biker • Traveler</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="stack stack--tight">
+          <div class="contact-line"><span>📍</span><span>Shop No. 5043, Level 4, New Market, Cumilla</span></div>
+          <div class="contact-line"><span>📞</span><span>01818-712949</span></div>
+          <div class="contact-line"><span>✉️</span><span>tech@fbftech.com</span></div>
+          <div class="contact-line"><span>🌐</span><span>www.fbftech.com</span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="row">
+          <span class="tag">One-Stop IT Solution</span>
+          <span class="tag">Custom PC Build</span>
+          <span class="tag">CCTV &amp; Networking</span>
+          <span class="tag">After-Sales Support</span>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">About Me</span>
+      <h2 class="h2">ব্যাংকার থেকে উদ্যোক্তা, আর পথের সাথী</h2>
+      <p class="lead">প্রতিটি অভিজ্ঞতা আমাকে শিখিয়েছে ধৈর্য, সততা আর সঠিক পরিকল্পনা — যা আজ FBF Tech-এর গ্রাহকসেবায় প্রতিফলিত হয়।</p>
+    </div>
+
+    <div class="grid grid--2" style="align-items:start">
+
+      <div class="stack">
+        <p class="lead">
+          আমি <strong>মোঃ ফুয়াদ</strong>। দীর্ঘ <strong>৮ বছরের বেশি</strong> সময় ব্যাংকিং পেশায় কাটিয়েছি —
+          যেখানে গ্রাহকের আস্থা, স্বচ্ছতা এবং সময়মতো সেবা দেওয়াই ছিল প্রধান কাজ। সেই অভিজ্ঞতা
+          আজও আমার প্রতিটি ব্যবসায়িক সিদ্ধান্তে প্রভাব ফেলে।
+        </p>
+        <p class="lead">
+          বর্তমানে কুমিল্লার নিউ মার্কেটে <strong>FBF Tech</strong> পরিচালনা করছি — যেখানে কম্পিউটার ও
+          এক্সেসরিজ বিক্রয়, হার্ডওয়্যার ও সফটওয়্যার সেবা, নেটওয়ার্কিং, CCTV এবং ওয়েব সলিউশন
+          দেওয়া হয়। লক্ষ্য একটাই: গ্রাহক যেন এক জায়গা থেকেই তার সব আইটি সমস্যার সমাধান পান।
+        </p>
+        <p class="lead">
+          ব্যাংকিংয়ের পেশাদারি শৃঙ্খলা আর উদ্যোক্তা জীবনের বাস্তব অভিজ্ঞতা — দুটোই আমি গ্রাহকের
+          সমস্যা সমাধানে কাজে লাগাই। আর যখনই সময় পাই, বাইক নিয়ে বেরিয়ে পড়ি; এক দশকের বেশি
+          রাইডিং অভিজ্ঞতা আমাকে শিখিয়েছে ধৈর্য, পরিকল্পনা এবং পথের প্রতি সম্মান।
+        </p>
+
+        <div class="row">
+          <span class="tag">Ex-Banker</span>
+          <span class="tag">Entrepreneur</span>
+          <span class="tag">Biker</span>
+          <span class="tag">Traveler</span>
+          <span class="tag">Cumilla</span>
+        </div>
+      </div>
+
+      <div class="stack stack--tight">
+
+        <div class="card">
+          <div class="journey-item">
+            <div class="journey-item__icon">🏦</div>
             <div>
-                <div class="eyebrow">ABOUT</div>
-                <h2>Three chapters, one journey.</h2>
-                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
-                    <p class="text-muted">I spent more than ten years in the banking sector — working with people, numbers and deadlines. It taught me discipline, patience and how to solve problems calmly when everything is on fire.</p>
-                    <p class="text-muted">Today I run a computer shop in Cumilla. I sell, repair and support the machines people depend on every day. It is a different kind of work, but the same principle: be honest, explain clearly, and stand behind what you sell.</p>
-                    <p class="text-muted">And then there is the bike. Long rides across Bangladesh keep me curious and keep everything else in perspective.</p>
-                </div>
+              <div class="journey-item__year">8+ Years</div>
+              <div class="h4" style="margin:2px 0 4px">Banking Career</div>
+              <p class="small muted">ব্যাংকিং সেক্টরে ৮ বছরের বেশি অভিজ্ঞতা — গ্রাহকসেবা, আর্থিক বিশ্লেষণ, স্বচ্ছতা ও পেশাদারি শৃঙ্খলা।</p>
             </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="journey-item">
+            <div class="journey-item__icon">🛒</div>
             <div>
-                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=80" alt="Computer Shop" style="border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); height: 400px; width: 100%;">
+              <div class="journey-item__year">2+ Years</div>
+              <div class="h4" style="margin:2px 0 4px">Business Owner — FBF Tech</div>
+              <p class="small muted">কুমিল্লার নিউ মার্কেটে FBF Tech পরিচালনা — কম্পিউটার, হার্ডওয়্যার, সফটওয়্যার, নেটওয়ার্কিং ও CCTV সলিউশন।</p>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Shop Section -->
-    <section id="shop" class="bg-gray">
-        <div class="container">
-            <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
-                <div class="eyebrow">THE SHOP</div>
-                <h2>Computers, handled with care.</h2>
-                <p class="text-muted" style="margin-top: 0.5rem;">Everything you need for home, study or office — from a single cable to a full workstation setup.</p>
-            </div>
-            
-            <div class="grid grid-3">
-                <div class="card text-center">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">💻</div>
-                    <h3>Sales</h3>
-                    <p class="text-muted text-sm" style="margin-top: 0.5rem;">Laptops, desktops, monitors and accessories — genuine products with proper warranty.</p>
-                </div>
-                <div class="card text-center">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔧</div>
-                    <h3>Service & repair</h3>
-                    <p class="text-muted text-sm" style="margin-top: 0.5rem;">Diagnostics, part replacement, upgrades, OS installation and data recovery.</p>
-                </div>
-                <div class="card text-center">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
-                    <h3>Advice & support</h3>
-                    <p class="text-muted text-sm" style="margin-top: 0.5rem;">Honest recommendations for home users, students and small offices in Cumilla.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Banking Section -->
-    <section id="banking" class="bg-white">
-        <div class="container grid grid-2">
+        <div class="card">
+          <div class="journey-item">
+            <div class="journey-item__icon">🏍️</div>
             <div>
-                <div class="eyebrow">BANKING</div>
-                <h2>A decade behind the counter.</h2>
-                <p class="text-muted" style="margin-top: 1.5rem; margin-bottom: 2rem;">
-                    Banking gave me the foundation for everything I do now — how to read a balance sheet, how to explain a complicated product in plain language, and how to keep a promise. Those habits came with me when I opened the shop.
-                </p>
-                <div style="display: flex; gap: 2rem; border-top: 1px solid var(--gray-200); padding-top: 2rem;">
-                    <div>
-                        <div class="stat-number">10+</div>
-                        <div class="text-sm text-muted">Years of service</div>
-                    </div>
-                    <div>
-                        <div class="stat-number">1000s</div>
-                        <div class="text-sm text-muted">Customer relationships</div>
-                    </div>
-                </div>
+              <div class="journey-item__year">10+ Years</div>
+              <div class="h4" style="margin:2px 0 4px">Riding &amp; Travel</div>
+              <p class="small muted">এক দশকের বেশি সময় ধরে বাইক রাইডিং ও ভ্রমণ — ধৈর্য, পরিকল্পনা এবং পথের বাস্তব অভিজ্ঞতা।</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
-                    <strong style="display: block; margin-bottom: 0.25rem;">Branch Operations</strong>
-                    <span class="text-sm text-muted">Daily banking, cash management and compliance.</span>
-                </div>
-                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
-                    <strong style="display: block; margin-bottom: 0.25rem;">Credit Analysis</strong>
-                    <span class="text-sm text-muted">Assessing SME and retail loan proposals.</span>
-                </div>
-                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
-                    <strong style="display: block; margin-bottom: 0.25rem;">Customer Relations</strong>
-                    <span class="text-sm text-muted">Building long-term trust with clients.</span>
-                </div>
-                <div style="background: var(--gray-50); padding: 1.5rem; border-radius: 1rem; border: 1px solid var(--gray-100);">
-                    <strong style="display: block; margin-bottom: 0.25rem;">Team Leadership</strong>
-                    <span class="text-sm text-muted">Guiding and training branch staff.</span>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Travel Section -->
-    <section id="travel" class="bg-gray">
-        <div class="container">
-            <div class="text-center" style="max-width: 600px; margin: 0 auto 3rem auto;">
-                <div class="eyebrow">ON THE ROAD</div>
-                <h2>Biking & travel.</h2>
-                <p class="text-muted" style="margin-top: 0.5rem;">Snapshots from weekend rides and longer trips — from Cumilla's historic sites to the winding hill roads of Bangladesh.</p>
-            </div>
+      </div>
 
-            <div class="grid grid-travel">
-                <div class="card gallery-card">
-                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80" class="gallery-img">
-                    <div class="gallery-caption">Highway mornings — Dhaka–Chattogram road</div>
-                </div>
-                <div class="card gallery-card">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" class="gallery-img">
-                    <div class="gallery-caption">Hill roads in the southeast</div>
-                </div>
-                <div class="card gallery-card">
-                    <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=900&q=80" class="gallery-img">
-                    <div class="gallery-caption">Shalban Vihar, Cumilla</div>
-                </div>
-                <div class="card gallery-card">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80" class="gallery-img">
-                    <div class="gallery-caption">Cold mornings, clear skies</div>
-                </div>
-                <div class="card gallery-card">
-                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80" class="gallery-img">
-                    <div class="gallery-caption">Parked at a roadside tea stall</div>
-                </div>
-                <div class="card gallery-card">
-                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=900&q=80" class="gallery-img">
-                    <div class="gallery-caption">Back at the shop</div>
-                </div>
-            </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BUSINESS
+     ============================================================ -->
+<section class="section section--alt" id="business">
+  <div class="container">
+
+    <div class="section-head">
+      <span class="eyebrow">Our Business</span>
+      <h2 class="h2">ব্যবসা কী বিক্রি করে বা কোন সেবা দেয়</h2>
+      <p class="lead">তিনটি প্রধান ধারা — পণ্য বিক্রয়, টেকনিক্যাল সেবা এবং আইটি সলিউশন।</p>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="card card--hover">
+        <div class="icon-box">🖥️</div>
+        <div class="h4" style="margin-bottom:var(--s-2)">কম্পিউটার ও এক্সেসরিজ বিক্রয়</div>
+        <p class="small muted">Desktop, Laptop, Monitor, Processor, RAM, SSD, Printer, Router, UPS এবং যাবতীয় কম্পিউটার সামগ্রী বিক্রি করি।</p>
+      </div>
+      <div class="card card--hover">
+        <div class="icon-box">🛠️</div>
+        <div class="h4" style="margin-bottom:var(--s-2)">হার্ডওয়্যার ও সফটওয়্যার সেবা</div>
+        <p class="small muted">Desktop ও Laptop Repair, OS Installation, Troubleshooting, PC Building, Upgrading এবং Software Solutions।</p>
+      </div>
+      <div class="card card--hover">
+        <div class="icon-box">🌐</div>
+        <div class="h4" style="margin-bottom:var(--s-2)">আইটি ও নেটওয়ার্কিং সেবা</div>
+        <p class="small muted">CCTV Installation, Networking, Wi-Fi Setup, Office IT Solutions এবং Website ও Web Application Development।</p>
+      </div>
+    </div>
+
+    <!-- PROBLEMS WE SOLVE -->
+    <div class="mt-16">
+      <h3 class="h3" style="text-align:center; margin-bottom:var(--s-2)">কম্পিউটার শপ মূলত কী সমাধান করে</h3>
+      <p class="lead muted" style="text-align:center; max-width:36rem; margin:0 auto var(--s-8)">
+        গ্রাহকের প্রযুক্তি ও আইটি-সংক্রান্ত সমস্যার প্রকৃত ও দীর্ঘমেয়াদি সমাধান।
+      </p>
+
+      <div class="grid grid--3">
+        <div class="card card--hover">
+          <div class="row" style="margin-bottom:var(--s-2)">
+            <span style="font-size:1.25rem">💻</span>
+            <span class="h4">ডিভাইস সংক্রান্ত সমস্যা</span>
+          </div>
+          <p class="small muted">কম্পিউটার বা ল্যাপটপ কেনা, নষ্ট হওয়া, ধীরগতির সমস্যা, আপগ্রেড ও মেরামত।</p>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="bg-white">
-        <div class="container text-center" style="max-width: 600px;">
-            <div class="eyebrow">CONTACT</div>
-            <h2>Let's connect.</h2>
-            <p class="text-muted" style="margin-top: 1rem; margin-bottom: 2rem;">
-                Need advice on a laptop, a repair, or a riding route? My door in Cumilla is always open — reach out any time.
-            </p>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <a href="mailto:fuad@example.com" class="btn btn-primary" style="border-radius: 0.75rem;">📧 fuad@example.com</a>
-                <a href="tel:+8801700000000" class="btn btn-outline" style="border-radius: 0.75rem;">📞 +880 1700-000000</a>
-                <a href="https://facebook.com" target="_blank" class="btn btn-outline" style="border-radius: 0.75rem; border-color: var(--gray-200); color: var(--gray-700);">🌐 Facebook</a>
-            </div>
-            <p class="text-sm text-muted" style="margin-top: 2rem;">
-                Kandirpar, Cumilla 3500 · Open Saturday–Thursday, 10:00–20:00
-            </p>
+        <div class="card card--hover">
+          <div class="row" style="margin-bottom:var(--s-2)">
+            <span style="font-size:1.25rem">🧩</span>
+            <span class="h4">কাজের প্রযুক্তিগত সমস্যা</span>
+          </div>
+          <p class="small muted">সফটওয়্যার, Windows, নেটওয়ার্ক, ইন্টারনেট, প্রিন্টার ও CCTV সংক্রান্ত সমস্যা সমাধান।</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="flex justify-between items-center" style="flex-wrap: wrap; gap: 1.5rem;">
-                <div>
-                    <div style="font-weight: 800; font-size: 1.125rem;">Md. Fuad</div>
-                    <div style="font-size: 0.875rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem;">Computer shop owner · Ex-banker · Biker</div>
-                </div>
-                <div style="display: flex; gap: 1.5rem;">
-                    <a href="#about">About</a>
-                    <a href="#shop">Shop</a>
-                    <a href="#banking">Banking</a>
-                    <a href="#travel">Travel</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <hr class="footer-divider">
-            <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">
-                © <span id="year"></span> Md. Fuad · Cumilla, Bangladesh
-            </div>
+        <div class="card card--hover">
+          <div class="row" style="margin-bottom:var(--s-2)">
+            <span style="font-size:1.25rem">🏢</span>
+            <span class="h4">ব্যবসা ও প্রতিষ্ঠানের আইটি সমস্যা</span>
+          </div>
+          <p class="small muted">অফিসের কম্পিউটার সেটআপ, নেটওয়ার্কিং, নিরাপত্তা, ডেটা ব্যাকআপ এবং প্রযুক্তিনির্ভর কাজ পরিচালনার সমাধান।</p>
         </div>
-    </footer>
+      </div>
+    </div>
 
-    <!-- Inline JavaScript for dynamic year -->
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+    <!-- CUSTOMERS -->
+    <div class="mt-16">
+      <h3 class="h3" style="text-align:center; margin-bottom:var(--s-2)">আমাদের প্রধান কাস্টমার</h3>
+      <p class="lead muted" style="text-align:center; max-width:36rem; margin:0 auto var(--s-8)">
+        The main customers of our computer shop.
+      </p>
+
+      <div class="grid grid--3">
+        <div class="card card--hover" style="position:relative; overflow:hidden">
+          <div class="bg-number">01</div>
+          <div class="h4" style="margin-bottom:var(--s-2); padding-right:40px">Individual Customers</div>
+          <p class="small muted">Students, teachers, freelancers, gamers, professionals and home users.</p>
+        </div>
+        <div class="card card--hover" style="position:relative; overflow:hidden">
+          <div class="bg-number">02</div>
+          <div class="h4" style="margin-bottom:var(--s-2); padding-right:40px">Business Customers</div>
+          <p class="small muted">Offices, companies, shops, startups, corporate organizations and entrepreneurs.</p>
+        </div>
+        <div class="card card--hover" style="position:relative; overflow:hidden">
+          <div class="bg-number">03</div>
+          <div class="h4" style="margin-bottom:var(--s-2); padding-right:40px">Institutional Customers</div>
+          <p class="small muted">Schools, colleges, universities, training centres, hospitals, NGOs and government organizations.</p>
+        </div>
+        <div class="card card--hover" style="position:relative; overflow:hidden">
+          <div class="bg-number">04</div>
+          <div class="h4" style="margin-bottom:var(--s-2); padding-right:40px">IT Professionals</div>
+          <p class="small muted">Software developers, graphic designers, content creators, technicians and IT service providers.</p>
+        </div>
+        <div class="card card--hover" style="position:relative; overflow:hidden">
+          <div class="bg-number">05</div>
+          <div class="h4" style="margin-bottom:var(--s-2); padding-right:40px">Resellers &amp; Dealers</div>
+          <p class="small muted">Small computer shops, IT traders and local hardware resellers.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY US
+     ============================================================ -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 class="h2">অন্যদের থেকে আলাদা কোথায়</h2>
+      <p class="lead">১৫টি কারণে FBF Tech আপনার বিশ্বস্ত আইটি পার্টনার।</p>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">1</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">One-Stop IT Solution</div><p class="small muted">Hardware, Software, Networking, CCTV ও Business IT Solutions—সবকিছু এক জায়গায়।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">2</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Customized Solutions</div><p class="small muted">গ্রাহকের প্রয়োজন, কাজের ধরন ও বাজেট অনুযায়ী কাস্টমাইজড সমাধান।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">3</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Expert Technical Support</div><p class="small muted">সমস্যা নির্ণয় থেকে শুরু করে কার্যকর টেকনিক্যাল সাপোর্ট প্রদান।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">4</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Honest Consultation</div><p class="small muted">অপ্রয়োজনীয় পণ্য বিক্রি নয়; প্রয়োজন অনুযায়ী সঠিক পরামর্শ।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">5</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Quality Products</div><p class="small muted">বিশ্বস্ত ব্র্যান্ড ও মানসম্মত পণ্য সরবরাহ।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">6</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Competitive Pricing</div><p class="small muted">যুক্তিসংগত ও প্রতিযোগিতামূলক মূল্যে পণ্য ও সেবা।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">7</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">After-Sales Support</div><p class="small muted">পণ্য কেনার পরেও প্রয়োজনীয় সহযোগিতা ও টেকনিক্যাল সাপোর্ট।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">8</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Business IT Solutions</div><p class="small muted">অফিস, স্কুল ও প্রতিষ্ঠানের জন্য সমন্বিত IT Infrastructure Solutions।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">9</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Custom PC Building</div><p class="small muted">Gaming, Professional Workstation, Office ও Personal Use-এর জন্য কাস্টম PC।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">10</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Complete Networking</div><p class="small muted">Router, ONU, LAN, Wi-Fi ও Office Networking Setup।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">11</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Security Solutions</div><p class="small muted">CCTV Camera, Surveillance ও Security System Installation Solutions।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">12</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Software &amp; Web Solutions</div><p class="small muted">Custom Website, Web Application ও Business Automation Solutions।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">13</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Problem-Solving Approach</div><p class="small muted">শুধু পণ্য বিক্রি নয়, গ্রাহকের প্রকৃত সমস্যার দীর্ঘমেয়াদি সমাধানে গুরুত্ব।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">14</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Long-Term Partnership</div><p class="small muted">এককালীন বিক্রির পরিবর্তে গ্রাহকের সঙ্গে দীর্ঘমেয়াদি ব্যবসায়িক সম্পর্ক।</p></div></div></div>
+      <div class="card card--hover"><div class="numbered"><div class="num-badge">15</div><div class="numbered__body"><div class="h4" style="font-size:.9375rem; margin-bottom:2px">Personalized Service</div><p class="small muted">প্রতিটি গ্রাহকের প্রয়োজন ও সমস্যাকে গুরুত্ব দিয়ে ব্যক্তিগতভাবে সেবা।</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     OFFERS
+     ============================================================ -->
+<section class="section section--alt" id="offers">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Pricing &amp; Delivery</span>
+      <h2 class="h2">দাম, অফার ও ডেলিভারি — আমাদের বিশেষ সুবিধা</h2>
+      <p class="lead">সাশ্রয়ী মূল্য, স্বচ্ছ চার্জ এবং দ্রুত ডেলিভারি — সবকিছু একসঙ্গে।</p>
+    </div>
+
+    <div class="grid grid--2">
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">1</div><p class="small" style="color:var(--whiteA-800)">Competitive Pricing — সাশ্রয়ী ও প্রতিযোগিতামূলক মূল্যে পণ্য ও সেবা।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">2</div><p class="small" style="color:var(--whiteA-800)">Special Offers &amp; Discounts — বিভিন্ন পণ্য ও সার্ভিসে আকর্ষণীয় অফার ও বিশেষ ছাড়।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">3</div><p class="small" style="color:var(--whiteA-800)">Bundle Offers — একাধিক পণ্য একসঙ্গে কিনলে বিশেষ মূল্য ও প্যাকেজ সুবিধা।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">4</div><p class="small" style="color:var(--whiteA-800)">Flexible Budget Options — গ্রাহকের বাজেট অনুযায়ী পণ্য ও কনফিগারেশন নির্বাচন।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">5</div><p class="small" style="color:var(--whiteA-800)">Product Warranty — প্রযোজ্য ক্ষেত্রে অফিসিয়াল ও স্টোর ওয়ারেন্টি সুবিধা।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">6</div><p class="small" style="color:var(--whiteA-800)">Fast Delivery — দ্রুত ও নির্ভরযোগ্য পণ্য ডেলিভারি সুবিধা।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">7</div><p class="small" style="color:var(--whiteA-800)">Home &amp; Office Delivery — বাসা ও অফিসে পণ্য পৌঁছে দেওয়ার সুবিধা।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">8</div><p class="small" style="color:var(--whiteA-800)">Bulk Purchase Deals — অফিস, স্কুল ও প্রতিষ্ঠানের বড় অর্ডারে বিশেষ মূল্য।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">9</div><p class="small" style="color:var(--whiteA-800)">Transparent Pricing — পণ্যের মূল্য ও সার্ভিস চার্জ সম্পর্কে স্বচ্ছ ধারণা।</p></div></div>
+      <div class="card"><div class="numbered"><div class="num-badge num-badge--solid">10</div><p class="small" style="color:var(--whiteA-800)">After-Sales Support — কেনাকাটার পরেও প্রয়োজনীয় সহযোগিতা ও সাপোর্ট।</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REVIEWS
+     ============================================================ -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Customer Reviews &amp; Feedback</span>
+      <h2 class="h2">কাস্টমারের রিভিউ ও মতামত</h2>
+      <p class="lead">গ্রাহকের সন্তুষ্টি, সৎ মতামত এবং ধারাবাহিক উন্নতিই আমাদের অগ্রাধিকার।</p>
+    </div>
+
+    <div class="grid grid--4">
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Customer Satisfaction</div><p class="xs muted">আমাদের সেবায় গ্রাহকের সন্তুষ্টিকে সর্বোচ্চ গুরুত্ব দেওয়া।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Honest Feedback</div><p class="xs muted">পণ্য ও সার্ভিস সম্পর্কে গ্রাহকের প্রকৃত মতামত সংগ্রহ।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Service Improvement</div><p class="xs muted">গ্রাহকের পরামর্শ অনুযায়ী সেবার মান উন্নত করা।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Trust &amp; Reliability</div><p class="xs muted">গ্রাহকের আস্থা ও বিশ্বাস অর্জন করা।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Customer Experience</div><p class="xs muted">কেনাকাটা থেকে শুরু করে বিক্রয়-পরবর্তী সেবা পর্যন্ত ভালো অভিজ্ঞতা নিশ্চিত করা।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Problem Resolution</div><p class="xs muted">গ্রাহকের অভিযোগ ও সমস্যাগুলো গুরুত্বের সঙ্গে সমাধান করা।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Customer Recommendations</div><p class="xs muted">সন্তুষ্ট গ্রাহকের অভিজ্ঞতা ও সুপারিশের মাধ্যমে নতুন গ্রাহকের আস্থা অর্জন।</p></div>
+      <div class="card card--hover"><div class="review-mark">&ldquo;</div><div class="h4" style="font-size:.9375rem; margin:4px 0">Continuous Improvement</div><p class="xs muted">প্রতিটি রিভিউ ও মতামতকে নিজেদের উন্নতির সুযোগ হিসেবে দেখা।</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Contact Us</span>
+      <h2 class="h2">যোগাযোগ করুন</h2>
+      <p class="lead">আপনার যেকোনো Computer, Hardware, Software, Networking ও CCTV Solution-এর জন্য আমাদের সঙ্গে যোগাযোগ করুন।</p>
+    </div>
+
+    <div class="grid grid--2" style="align-items:start">
+
+      <div class="stack stack--tight">
+        <a class="contact-tile" href="tel:+8801818712949">
+          <div class="icon-box icon-box--sm">📞</div>
+          <div>
+            <div class="xxs" style="color:var(--whiteA-500); text-transform:uppercase; letter-spacing:.08em">Phone / WhatsApp</div>
+            <div class="small" style="font-weight:600">01818-712949</div>
+          </div>
+        </a>
+        <a class="contact-tile" href="https://wa.me/8801818712949" target="_blank" rel="noopener">
+          <div class="icon-box icon-box--sm">💬</div>
+          <div>
+            <div class="xxs" style="color:var(--whiteA-500); text-transform:uppercase; letter-spacing:.08em">WhatsApp Chat</div>
+            <div class="small" style="font-weight:600">wa.me/8801818712949</div>
+          </div>
+        </a>
+        <a class="contact-tile" href="https://fbftech.com" target="_blank" rel="noopener">
+          <div class="icon-box icon-box--sm">🌐</div>
+          <div>
+            <div class="xxs" style="color:var(--whiteA-500); text-transform:uppercase; letter-spacing:.08em">Website</div>
+            <div class="small" style="font-weight:600">www.fbftech.com</div>
+          </div>
+        </a>
+        <a class="contact-tile" href="mailto:tech@fbftech.com">
+          <div class="icon-box icon-box--sm">✉️</div>
+          <div>
+            <div class="xxs" style="color:var(--whiteA-500); text-transform:uppercase; letter-spacing:.08em">Email</div>
+            <div class="small" style="font-weight:600">tech@fbftech.com</div>
+          </div>
+        </a>
+        <a class="contact-tile" href="https://www.facebook.com/search/top?q=FBF%20Tech" target="_blank" rel="noopener">
+          <div class="icon-box icon-box--sm">📘</div>
+          <div>
+            <div class="xxs" style="color:var(--whiteA-500); text-transform:uppercase; letter-spacing:.08em">Facebook Page</div>
+            <div class="small" style="font-weight:600">FBF Tech</div>
+          </div>
+        </a>
+        <a class="contact-tile" href="https://maps.google.com/?q=New+Market+Cumilla" target="_blank" rel="noopener">
+          <div class="icon-box icon-box--sm">📍</div>
+          <div>
+            <div class="xxs" style="color:var(--whiteA-500); text-transform:uppercase; letter-spacing:.08em">Business Address</div>
+            <div class="small" style="font-weight:600">FBF Tech, Shop No. 5043, Level 4, New Market, Cumilla, Bangladesh</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="cta-card">
+        <div class="stack">
+          <span class="eyebrow eyebrow--light">FBF Tech</span>
+          <h3 class="h3">Your Trusted <span class="gradient-text">IT Solutions Partner</span></h3>
+          <p class="small" style="color:var(--whiteA-800)">
+            শুধু পণ্য বিক্রি নয় — গ্রাহকের প্রকৃত সমস্যার দীর্ঘমেয়াদি সমাধান। প্রয়োজন অনুযায়ী
+            সঠিক পরামর্শ, মানসম্মত পণ্য এবং বিক্রয়-পরবর্তী টেকনিক্যাল সাপোর্ট।
+          </p>
+
+          <div class="addr-box">
+            <div class="xxs" style="color:var(--brand-200); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px">Business Address</div>
+            <div class="small" style="font-weight:600">FBF Tech, Shop No. 5043, Level 4, New Market, Cumilla, Bangladesh.</div>
+          </div>
+
+          <div class="row">
+            <a href="tel:+8801818712949" class="btn btn--primary">📞 01818-712949</a>
+            <a href="https://wa.me/8801818712949" target="_blank" rel="noopener" class="btn btn--outline">💬 WhatsApp</a>
+            <a href="mailto:tech@fbftech.com" class="btn btn--ghost">✉️ Email</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+
+      <div class="footer__brand">
+        <div class="footer__logo">F</div>
+        <div>
+          <div class="small" style="font-weight:700">FBF Tech — Md. Fuad</div>
+          <div class="xxs" style="color:var(--whiteA-600)">Computer • Hardware • Software • Networking • CCTV</div>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="tel:+8801818712949">Call</a>
+        <a href="https://wa.me/8801818712949" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://fbftech.com" target="_blank" rel="noopener">Website</a>
+        <a href="#home">Back to top ↑</a>
+      </div>
+
+      <div class="xxs" style="color:var(--whiteA-500)">
+        © <span id="year"></span> FBF Tech, Cumilla. All rights reserved.
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="fab" href="https://wa.me/8801818712949" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.83 1h.01a7.94 7.94 0 0 0 5.56-13.58zM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 5.59 3.09zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.15-.42.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.07-.6-1.46-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.62s.7 1.88.8 2.01c.1.13 1.37 2.1 3.32 2.94.46.2.83.32 1.11.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.16-.46.16-.85.12-.94-.05-.09-.18-.14-.38-.24z"/>
+  </svg>
+</a>
+
+<script>
+/* ============================================================
+   MOBILE NAV TOGGLE
+   ============================================================ */
+(function () {
+  var btn   = document.getElementById('navToggle');
+  var panel = document.getElementById('navMobile');
+  btn.addEventListener('click', function () {
+    var open = panel.classList.toggle('is-open');
+    btn.textContent = open ? '✕' : '☰';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // Close menu when a link is clicked
+  panel.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      panel.classList.remove('is-open');
+      btn.textContent = '☰';
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* ============================================================
+   DYNAMIC YEAR
+   ============================================================ */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
